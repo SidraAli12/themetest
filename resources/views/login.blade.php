@@ -4,7 +4,7 @@
     <base href="{{ asset('') }}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign Up | Metronic</title>
+    <title>Login | Metronic</title>
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -18,12 +18,12 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="w-lg-500px p-10">
                         <!--begin::Form-->
-                        <form class="form w-100" method="POST" action="{{ route('register.store') }}">
+                        <form class="form w-100" method="POST" action="{{ route('login.store') }}">
                             @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
-                                <h1 class="text-dark fw-bolder mb-3">Sign Up</h1>
-                                <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                                <h1 class="text-dark fw-bolder mb-3">Sign In</h1>
+                                <div class="text-gray-500 fw-semibold fs-6">Welcome back! Please login to your account.</div>
                             </div>
                             <!--end::Heading-->
                             <!--begin::Social Login Buttons-->
@@ -48,55 +48,39 @@
                                 <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
                             </div>
                             <!--end::Separator-->
-                            <!--begin::Form Fields-->
-                            <div class="fv-row mb-8">
-                                <input type="text" placeholder="Full Name" name="name" value="{{ old('name') }}" required class="form-control bg-transparent" />
-                            </div>
+                            <!--begin::Input group-->
                             <div class="fv-row mb-8">
                                 <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required class="form-control bg-transparent" />
                             </div>
-                            <div class="fv-row mb-8" data-kt-password-meter="true">
-                                <div class="mb-1 position-relative mb-3">
-                                    <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" required autocomplete="off" />
-                                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
-                                        data-kt-password-meter-control="visibility">
-                                        <i class="ki-duotone ki-eye-slash fs-2"></i>
-                                        <i class="ki-duotone ki-eye fs-2 d-none"></i>
-                                    </span>
+                            <div class="fv-row mb-8 position-relative">
+                                <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" required />
+                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                    <i class="ki-duotone ki-eye-slash fs-2"></i>
+                                    <i class="ki-duotone ki-eye fs-2 d-none"></i>
+                                </span>
+                            </div>
+                            <!--end::Input group-->
+                            <div class="d-flex flex-stack mb-8">
+                                <div class="form-check form-check-solid">
+                                    <input class="form-check-input" type="checkbox" value="1" name="remember" id="remember" />
+                                    <label class="form-check-label fw-semibold text-gray-700 fs-base ms-1" for="remember">
+                                        Remember me
+                                    </label>
                                 </div>
-                                <div class="text-muted fs-7">Use 6 or more characters with a mix of letters, numbers & symbols.</div>
+                                <a href="#" class="link-primary fs-base fw-semibold">Forgot Password?</a>
                             </div>
-                            <div class="fv-row mb-8">
-                                <input type="password" placeholder="Confirm Password" name="password_confirmation" required autocomplete="off" class="form-control bg-transparent" />
-                            </div>
-                            <!--end::Form Fields-->
-                            <!--begin::Terms Checkbox-->
-                            <div class="fv-row mb-8">
-                                <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" required />
-                                    <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                        I accept the <a href="#" class="ms-1 link-primary">Terms</a>
-                                    </span>
-                                </label>
-                            </div>
-                            <!--end::Terms Checkbox-->
-                            <!--begin::Submit Button-->
-                            <div class="d-grid mb-10 mt-4">
+                            <div class="d-grid mb-10">
                                 <button type="submit" class="btn btn-primary">
-                                    <span class="indicator-label">Sign up</span>
-                                    <span class="indicator-progress">
-                                        Please wait...
+                                    <span class="indicator-label">Sign In</span>
+                                    <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>
                                 </button>
                             </div>
-                            <!--end::Submit Button-->
-                            <!--begin::Login Link-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">
-                                Already have an account?
-                                <a href="{{ url('/login') }}" class="link-primary fw-semibold">Sign in</a>
+                                Don’t have an account?
+                                <a href="{{ url('/register') }}" class="link-primary fw-semibold">Sign up</a>
                             </div>
-                            <!--end::Login Link-->
                         </form>
                         <!--end::Form-->
                     </div>
@@ -112,21 +96,18 @@
                     </a>
                     <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10"
                         src="{{ asset('assets/media/misc/auth-screens.png') }}" alt="" />
-                    <h1 class="text-white fs-2qx fw-bolder mb-7">Fast, Efficient and Productive</h1>
+                    <h1 class="text-white fs-2qx fw-bolder mb-7">Welcome Back!</h1>
                     <div class="text-white fs-base opacity-75">
-                        Create an account to get access to your personalized dashboard and experience the full
-                        Metronic power.
+                        Log in to continue managing your projects and analytics dashboard.
                     </div>
                 </div>
             </div>
             <!--end::Aside Section-->
         </div>
     </div>
-    <!--begin::Scripts-->
     <script>var hostUrl = "{{ asset('assets/') }}";</script>
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/authentication/sign-up/general.js') }}"></script>
-    <!--end::Scripts-->
+    <script src="{{ asset('assets/js/custom/authentication/sign-in/general.js') }}"></script>
 </body>
 </html>
