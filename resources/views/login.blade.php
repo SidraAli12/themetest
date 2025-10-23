@@ -18,7 +18,7 @@
                 <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                     <div class="w-lg-500px p-10">
                         <!--begin::Form-->
-                        <form class="form w-100" method="POST" action="{{ route('login.store') }}">
+                        <form class="form w-100" method="POST" action="{{ route('login.perform') }}">
                             @csrf
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
@@ -67,7 +67,7 @@
                                         Remember me
                                     </label>
                                 </div>
-                                <a href="#" class="link-primary fs-base fw-semibold">Forgot Password?</a>
+<a href="{{ route('password.request') }}">Forgot Password?</a>
                             </div>
                             <div class="d-grid mb-10">
                                 <button type="submit" class="btn btn-primary">
