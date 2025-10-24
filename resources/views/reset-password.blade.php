@@ -1,3 +1,4 @@
+@extends('layout.noAuth')
 <!DOCTYPE html>
 <html lang="en">
 <head>

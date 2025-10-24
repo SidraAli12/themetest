@@ -22,14 +22,7 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-    //         return redirect('/dashboard')->with('success', 'Welcome back!');
-    //     }
-
-    //     // return back()->with('error', 'Invalid credentials.'); // ager invalid hue tou it will show this msg
-    //       return redirect()->route('home');
-    // }
+    
 if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
         return redirect()->intended('/dashboard');

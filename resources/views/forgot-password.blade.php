@@ -1,65 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Forgot Password</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style.bundle.css') }}" />
-</head>
+@extends('layout.noAuth')
 
-<body id="kt_body" class="app-blank">
+@section('title', 'Forgot Password | Metronic')
 
-<div class="d-flex flex-column flex-root" id="kt_app_root">
-    <div class="d-flex flex-column flex-lg-row flex-column-fluid">
-        <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
-            <div class="d-flex flex-center flex-column flex-lg-row-fluid">
-                <div class="w-lg-500px p-10">
-                    
-                    {{-- Forgot Password Form --}}
-                    <form class="form w-100" method="POST" action="{{ route('password.email') }}">
-                        @csrf
-                        
-                        <div class="text-center mb-10">
-                            <h1 class="text-dark fw-bolder mb-3">Forgot Password ?</h1>
-                            <div class="text-gray-500 fw-semibold fs-6">
-                                Enter your email to reset your password.
-                            </div>
+@section('content')
+    <!--begin::Form Section-->
+    <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1 justify-content-center">
+        <div class="d-flex flex-center flex-column flex-lg-row-fluid">
+            <div class="w-lg-500px p-10">
+                <form class="form w-100" method="POST" action="{{ route('password.email') }}">
+                    @csrf
+
+                    <div class="text-center mb-10">
+                        <h1 class="text-dark fw-bolder mb-3">Forgot Password?</h1>
+                        <div class="text-gray-500 fw-semibold fs-6">
+                            Enter your email to reset your password
                         </div>
+                    </div>
 
-                        {{-- Email input --}}
-                        <div class="fv-row mb-8">
-                            <input type="email" placeholder="Email" name="email"
-                                   value="{{ old('email') }}"
-                                   class="form-control bg-transparent @error('email') is-invalid @enderror" required />
-                            @error('email')
-                                <div class="text-danger small mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <div class="fv-row mb-8">
+                        <input type="email" name="email" placeholder="Email"
+                               value="{{ old('email') }}" required
+                               class="form-control bg-transparent @error('email') is-invalid @enderror" />
+                        @error('email')
+                            <div class="text-danger small mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                        {{-- Success message --}}
-                        @if (session('status'))
-                            <div class="alert alert-success">{{ session('status') }}</div>
-                        @endif
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">{{ session('status') }}</div>
+                    @endif
 
-                        <div class="d-flex flex-wrap justify-content-center pb-lg-0">
-                            <button type="submit" class="btn btn-primary me-4">
-                                <span class="indicator-label">Submit</span>
-                            </button>
-                            <a href="{{ route('login.show') }}" class="btn btn-light">Cancel</a>
-                        </div>
-                    </form>
-                </div>
+                    <div class="d-grid mb-10 mt-4">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                    <div class="text-gray-500 text-center fw-semibold fs-6">
+                        Remember your password?
+                        <a href="{{ route('login.show') }}" class="link-primary fw-semibold">Sign in</a>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        {{-- Right side image --}}
-        <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center"
-             style="background-image: url({{ asset('assets/media/misc/auth-bg.png') }})">
+    <!--begin::Aside Section-->
+    <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
+         style="background-image: url('{{ asset('assets/media/misc/auth-bg.png') }}'); min-height: 100vh;">
+        <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100 text-center">
+            <a href="{{ url('/') }}" class="mb-12">
+                <img alt="Logo" src="{{ asset('assets/media/logos/custom-1.png') }}" class="h-60px h-lg-75px" />
+            </a>
+            <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10"
+                src="{{ asset('assets/media/misc/auth-screens.png') }}" alt="" />
+            <h1 class="text-white fs-2qx fw-bolder mb-7">Fast, Efficient and Productive</h1>
+            <div class="text-white fs-base opacity-75">
+                Enter your email to receive a password reset link and regain access to your account.
+            </div>
         </div>
     </div>
-</div>
-
-<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-</body>
-</html>
+@endsection
