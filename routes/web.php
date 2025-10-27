@@ -8,12 +8,15 @@ use App\Http\Controllers\ResetPasswordController;
 
 
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 
 Route::get('/dashboard', function () {
-    return view('layout.app');
-})->middleware('auth');
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,4 +38,11 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 
 // Reset Password – handle new password save
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+use Illuminate\Support\Facades\Auth;
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login')->with('status', 'You have been logged out successfully.');
+})->name('logout');
 
