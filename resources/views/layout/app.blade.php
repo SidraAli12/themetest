@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@yield('title', 'Dashboard | Metronic')</title>
 
+    <!--begin::Favicon & Fonts-->
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" />
+    <!--end::Favicon & Fonts-->
+
+    <!--begin::Global Stylesheets Bundle-->
+    <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
     @stack('styles')
 </head>
 
@@ -30,10 +36,8 @@
                 <!--begin::Main-->
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                     <div class="d-flex flex-column flex-column-fluid">
-
-                        {{-- Page content --}}
+                        {{-- Page Content --}}
                         @yield('content')
-
                     </div>
 
                     {{-- Footer --}}
@@ -47,10 +51,16 @@
         <!--end::App Page-->
     </div>
 
-    {{-- Scripts --}}
+    <!--begin::Javascript-->
     <script>var hostUrl = "{{ asset('assets/') }}";</script>
+
+    <!--begin::Global Javascript Bundle-->
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+    <!--end::Global Javascript Bundle-->
+
+    <!--begin::Custom JS (optional per page)-->
     @stack('scripts')
+    <!--end::Custom JS-->
 </body>
 </html>

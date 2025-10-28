@@ -1,5 +1,3 @@
-
-
 <footer class="app-footer py-4 d-flex flex-lg-column flex-md-row flex-sm-column justify-content-between align-items-center px-5">
     <div class="text-gray-900 order-2 order-md-1">
         <span class="text-muted fw-semibold me-1">© {{ date('Y') }}</span>
