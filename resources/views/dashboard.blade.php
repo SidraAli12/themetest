@@ -1,56 +1,34 @@
-
-
 @extends('layout.app')
 
-@section('title', 'Dashboard')
+@section('page_title', 'Dashboard')
+@section('breadcrumb', 'Overview')
 
 @section('content')
-<div class="app-content flex-column-fluid">
-    <div class="app-container container-xxl">
-
-        <!--begin::Welcome card-->
-        <div class="card mb-10">
-            <div class="card-body py-10">
-                <h1 class="fw-bold fs-2x mb-5">Welcome, {{ Auth::user()->name ?? 'User' }} 👋</h1>
-                <p class="text-gray-600 fs-5">
-                    You are logged into your Metronic-powered dashboard.
-                </p>
+<div class="row g-5 mb-5">
+    <div class="col-md-6 col-xxl-3">
+        <div class="card card-dashed h-100 p-6 d-flex justify-content-between flex-row">
+            <div>
+                <div class="fs-4 fw-bold mb-2">Total Revenue <span class="text-gray-400 fs-6 ms-2">+38%</span></div>
+                <div class="fs-2x fw-bolder">$8,420</div>
             </div>
+            <div id="chart1" class="w-75px h-75px"></div>
         </div>
-        <!--end::Welcome card-->
+    </div>
 
-        <!--begin::Example stats cards-->
-        <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-            <div class="col-md-4">
-                <div class="card bg-light-primary">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Total Tasks</h3>
-                        <div class="fs-2 fw-bold text-primary">12</div>
-                    </div>
-                </div>
+    <div class="col-md-6 col-xxl-3">
+        <div class="card card-dashed h-100 p-6 d-flex justify-content-between flex-row">
+            <div>
+                <div class="fs-4 fw-bold mb-2">New Orders <span class="text-gray-400 fs-6 ms-2">+22%</span></div>
+                <div class="fs-2x fw-bolder">1,045</div>
             </div>
-
-            <div class="col-md-4">
-                <div class="card bg-light-success">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Completed</h3>
-                        <div class="fs-2 fw-bold text-success">8</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card bg-light-danger">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Pending</h3>
-                        <div class="fs-2 fw-bold text-danger">4</div>
-                    </div>
-                </div>
-            </div>
+            <div id="chart2" class="w-75px h-75px"></div>
         </div>
-        <!--end::Example stats cards-->
-
     </div>
 </div>
 @endsection
 
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', () => console.log('Dashboard ready'));
+</script>
+@endsection

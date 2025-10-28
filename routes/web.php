@@ -8,15 +8,15 @@ use App\Http\Controllers\ResetPasswordController;
 
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard')->middleware('auth');
+})->name('dashboard');
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard')->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');
